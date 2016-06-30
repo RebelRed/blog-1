@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if user_signed_in? %>
+      <%= link_to "sign out",destroy_user_session_path,method: :delete %>
+<% else %>
+      <%= link_to "sign in",new_user_session_path %>
+      <%= link_to "sign up", new_user_registration_path %>
+<% end %>
+<br><br>
+<%= link_to"welcome",root_path %>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+
+  <div id="sidebar">
+  <div id="logo">
+      <%= link_to root_path do %>
+          <%= image_tag "logo.jpg" %>
+  <% end %>
+  </div>
+
+  <ul>
+     <li class="category">website</li>
+     <li><%= link_to"blog", root_path%></li>
+     <li>About</li>
+     </ul>
+  <ul>
+     <li class="category">social</li>
+     <li><a href="https://www.facebook.com/groups/407763392635734/">facebook</a></li>
+     </ul>
+
+     <p class="sigin_in">admin login</p>
+     </div>
+     <div id="main_content">
+       <p>all posts</p>
+       <div class="buttons">
+         <button class="button"><%= link_to "New Article",new_article_path%></button>
+         <button class="button">log out</button>
+         </div>
+         </div>
+
+
+
+
+<%= yield %>
+
+</body>
+</html>
